@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Input</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+	<script>
+      $(document).ready(function(){
+        var name;
+        $("#submit_btn").click(function(){
+          name=$("#name").val();
+          $.post("http://localhost:8080/data",{data:name}, function(data){
+          });
+        });
+      });
+  </script>
+</head>
+<body>
+<input id ='name' type="text" placeholder="name"/>
+<input type="submit" value="Submit" id ="submit_btn"/>
+</body>
+</html>
