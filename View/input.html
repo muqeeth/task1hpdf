@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Input</title>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+<!-- 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
 	<script>
       $(document).ready(function(){
         var name;
@@ -12,10 +12,12 @@
           });
         });
       });
-  </script>
+  </script> -->
 </head>
 <body>
-<input id ='name' type="text" placeholder="name"/>
+<form action="/data" method="post" >
+<input id ='name' type="text" placeholder="name" name="variable" />
 <input type="submit" value="Submit" id ="submit_btn"/>
+</form>
 </body>
 </html>

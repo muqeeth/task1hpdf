@@ -33,24 +33,17 @@ app.get('/setcookie',function (req, res, next) {
 });
 app.get('/getcookie',function (req, res, next) {
   var cookie1 = req.cookies.name;
-  if (cookie1 === undefined)
-  {
-    console.log('create cookie');
-  } 
-  else
-  { 
-    console.log('cookie exists', cookie1);
-  }
   var cookie2 = req.cookies.age;
-  if (cookie2 === undefined)
+  if (cookie1 === undefined && cookie2===undefined)
   {
     console.log('create cookie');
+    res.send('') 
   } 
   else
   { 
-    console.log('cookie exists', cookie2);
+    console.log('cookie exists');
+    res.send("cookie name = " + cookie1 + "  cookie age = " + cookie2); 
   }
-  res.send('') 
   next(); 
 });
 app.get('/',function (req,res) {
@@ -70,9 +63,9 @@ app.get('/input', function (req, res) {
   res.sendFile(path.join(__dirname, 'View', 'input.html'));
 });
 app.post('/data',function(req,res){
-  var data=req.body.data;
+  var data=req.body.variable;
   console.log(" name = "+data);
-  res.send("yes");
+  res.send(data);
 });
 var url1 = 'https://jsonplaceholder.typicode.com/users';
 var url2 = 'https://jsonplaceholder.typicode.com/posts';
@@ -101,7 +94,7 @@ app.get('/authors', function(req, res){
     		count.push(c);
     	}
     	console.log(count)
-    	for(var i=0;i<10;i++){
+    	for(var i=0;i<len1;i++){
     		posts.push(count[i])
     	}
     	callback();
