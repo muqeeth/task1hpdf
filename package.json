@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "devserver": "./node_modules/nodemon/bin/nodemon.js app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,5 +14,8 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.5"
   }
 }

@@ -28,7 +28,7 @@ app.get('/setcookie',function (req, res, next) {
   { 
     console.log('cookie exists', cookie2);
   }
-  res.send('') 
+  res.send('cookies has been set check <a href="http://localhost:8080/getcookie">here</a>') 
   next(); 
 });
 app.get('/getcookie',function (req, res, next) {
@@ -37,7 +37,7 @@ app.get('/getcookie',function (req, res, next) {
   if (cookie1 === undefined && cookie2===undefined)
   {
     console.log('create cookie');
-    res.send('') 
+    res.send('cookies are not set .create cookie by clicking <a href="http://localhost:8080/setcookie">here</a>') 
   } 
   else
   { 
@@ -51,7 +51,8 @@ app.get('/',function (req,res) {
 })
 
 app.get('/robots.txt',function(req,res){
-	res.send('you are not allowed')
+	//res.send('you are not allowed')
+  res.sendFile(path.join(__dirname,'View','deny.html'))
 })
 app.get('/image', function (req, res) {
   res.sendFile(path.join(__dirname,'View', 'image.png'));
@@ -106,11 +107,11 @@ app.get('/authors', function(req, res){
   	}
   	function callback(){
       if (!error && response.statusCode === 200) {
-      	myChannel = [];
+      	mydata = [];
       	for(var i =0 ; i<len1;i++){
-      		myChannel.push( body[i].name + "  has wrriten " + posts[i] +" posts");
+      		mydata.push( body[i].name + "  has wrriten " + posts[i] +" posts");
       	}
-      	res.send( myChannel.join("<br/>"));
+      	res.send( mydata.join("<br/>"));
     }
 }
   })
