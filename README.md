@@ -4,7 +4,6 @@ open terminal and run following commands
 2. `cd task1hpdf`  move to directory
 3. `npm install	`	install packages required
 
-
 4.` npm run devserver`	run the server
 
 
