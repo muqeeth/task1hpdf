@@ -109,7 +109,7 @@ app.get('/authors', function(req, res){
       if (!error && response.statusCode === 200) {
       	mydata = [];
       	for(var i =0 ; i<len1;i++){
-      		mydata.push( body[i].name + "  has wrriten " + posts[i] +" posts");
+      		mydata.push((i+1)+") "+ body[i].name + "  has wrriten " + posts[i] +" posts");
       	}
       	res.send( mydata.join("<br/>"));
     }
