@@ -52,6 +52,7 @@ app.get('/',function (req,res) {
 
 app.get('/robots.txt',function(req,res){
 	//res.send('you are not allowed')
+  res.status(403)
   res.sendFile(path.join(__dirname,'View','deny.html'))
 })
 app.get('/image', function (req, res) {
