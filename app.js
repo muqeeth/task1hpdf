@@ -7,7 +7,7 @@ var request = require('request');
 app.use(cookieParser());
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.get('/setcookie',function (req, res, next) {
+app.get('/setcookie',function (req, res) {
   var cookie1 = req.cookies.name;
   if (cookie1 === undefined)
   {
@@ -29,9 +29,8 @@ app.get('/setcookie',function (req, res, next) {
     console.log('cookie exists', cookie2);
   }
   res.send('cookies has been set check <a href="http://localhost:8080/getcookie">here</a>') 
-  next(); 
 });
-app.get('/getcookie',function (req, res, next) {
+app.get('/getcookie',function (req, res) {
   var cookie1 = req.cookies.name;
   var cookie2 = req.cookies.age;
   if (cookie1 === undefined && cookie2===undefined)
@@ -44,7 +43,6 @@ app.get('/getcookie',function (req, res, next) {
     console.log('cookie exists');
     res.send("cookie name = " + cookie1 + "  cookie age = " + cookie2); 
   }
-  next(); 
 });
 app.get('/',function (req,res) {
 	res.sendFile(path.join(__dirname, 'View', 'index.html'));
@@ -67,7 +65,7 @@ app.get('/input', function (req, res) {
 app.post('/data',function(req,res){
   var data=req.body.variable;
   console.log(" name = "+data);
-  res.send(data);
+  res.send("entered value is : " + data);
 });
 var url1 = 'https://jsonplaceholder.typicode.com/users';
 var url2 = 'https://jsonplaceholder.typicode.com/posts';
@@ -117,6 +115,9 @@ app.get('/authors', function(req, res){
 }
   })
 });
+app.get('*',function(req,res){
+  res.sendFile(path.join(__dirname,'View','errorroute.html'))
+})
 app.listen(8080,function(){
 	console.log("listening on port 8080")
 })
